@@ -1,9 +1,10 @@
+import ListadoProducts from "./productos/ListadoProducts";
 
 function App() {
   return (
-    <div className="container text-center">
-      <h3>Tienda online</h3>
-    </div>
+    
+    <ListadoProducts></ListadoProducts>
+    
   );
 }
 
