@@ -24,30 +24,45 @@ export default function ListadoProducts() {
     };
 
     return (
-        <div className="container mt-4">
-            <div className="text-center mb-4">
-                <h3>Tienda Online</h3>
-            </div>
-
+        <div className="container mt-4" style={{ paddingTop: "80px" }}> {/* Ajusta el valor de paddingTop según el tamaño de tu navbar */}
             {/* Sistema de cuadrícula de Bootstrap */}
             <div className="row">
                 {productos.map((producto, indice) => (
                     <div key={indice} className="col-md-3 mb-4">
-                        <div className="card" style={{ width: "18rem" }}>
+                        <div 
+                            className="card" 
+                            style={{
+                                width: "18rem", 
+                                height: "370px", 
+                                backgroundColor: "rgba(244, 226, 133, 0.7)", // Fondo translúcido solo para la carta
+                                borderRadius: "10px", // Bordes redondeados
+                                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Sombra suave
+                                overflow: "hidden"
+                            }}
+                        >
+                            {/* Imagen sin efecto cristal */}
                             <img
-                                src={"../img/img_productos/" + producto.product_id + ".webp"} // Cambia esto si los productos tienen imágenes dinámicas.
+                                src={"../img/img_productos/" + producto.product_id + ".png"} // Cambia esto si los productos tienen imágenes dinámicas.
                                 className="card-img-top"
                                 alt={producto.name}
-                                style={{ height: "200px", objectFit: "contain" }}
+                                style={{ height: "170px", objectFit: "contain" }} // Imagen con ajuste adecuado
                             />
-                            <div className="card-body">
+                            <div 
+                                className="card-body" 
+                                style={{
+                                    backgroundColor: "rgba(244, 226, 133, 0.7)", 
+                                    backdropFilter: "blur(10px)", 
+                                    height: "calc(100% - 150px)"
+                                }}
+                            >
                                 <h5 className="card-title">{producto.name}</h5>
-                                <p className="card-text">{producto.description}</p>
-                                <h5 className="card-title">
-                                    <NumericFormat value={producto.price} displayType='text' thousandSeparator="," prefix={"$"} decimalScale={2} fixedDecimalScale/>                                 
-
-                                </h5>
-                                <a href="#" className="btn btn-primary">Agregar</a>
+                                <p className="card-text" style={{ maxHeight: "45px", overflowY: "auto", height:"45px" }}>
+                                    {producto.description}
+                                </p>
+                                <h6 className="card-title">
+                                    <NumericFormat value={producto.price} displayType='text' thousandSeparator="," prefix={"$"} decimalScale={2} fixedDecimalScale/>
+                                </h6>
+                                <a href="#" className="btn" style={{ backgroundColor: "#2a5d24", color:"white"}}>Agregar</a>
                             </div>
                         </div>
                     </div>
@@ -56,5 +71,3 @@ export default function ListadoProducts() {
         </div>
     );
 }
-
-
